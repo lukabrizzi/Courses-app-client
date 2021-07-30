@@ -10,7 +10,7 @@ import 'antd/dist/antd.css';
 import './EditUserForm.scss';
 
 export default function EditUserForm(props) {
-    const { user } = props;
+    const { user, setIsVisibleModal, setReloadUsers } = props;
     const [avatar, setAvatar] = useState(null)
     const [userData, setUserData] = useState({})
 
@@ -20,7 +20,8 @@ export default function EditUserForm(props) {
             lastname: user.lastname,
             email: user.email,
             role: user.role,
-            avatar: user.avatar
+            avatar: user.avatar,
+            password: null
         });
     }, [user])
 
@@ -50,8 +51,12 @@ export default function EditUserForm(props) {
                 notification["error"]({
                     message: "Las contraseñas deben ser iguales."
                 })
+                return;
+            } else {
+                delete userUpdate.repeatPassword;
+
+                setUserData({ ...userData, password: "", repeatPassword: "" })
             }
-            return;
         }
 
         if (!userUpdate.name || !userUpdate.lastname || !userUpdate.email) {
@@ -68,6 +73,8 @@ export default function EditUserForm(props) {
                     notification["success"]({
                         message: result.message
                     });
+                    setIsVisibleModal(false);
+                    setReloadUsers(true);
                 });
             });
         } else {
@@ -75,6 +82,8 @@ export default function EditUserForm(props) {
                 notification["success"]({
                     message: result.message
                 });
+                setIsVisibleModal(false);
+                setReloadUsers(true);
             });
         }
 
@@ -194,6 +203,7 @@ function EditForm(props) {
                             prefix={<LockOutlined />}
                             type="password"
                             placeholder="Contraseña"
+                            value={userData.password}
                             onChange={e =>
                                 setUserData({ ...userData, password: e.target.value })
                             }
@@ -206,6 +216,7 @@ function EditForm(props) {
                             prefix={<LockOutlined />}
                             type="password"
                             placeholder="Repetir contraseña"
+                            value={userData.repeatPassword}
                             onChange={e =>
                                 setUserData({ ...userData, repeatPassword: e.target.value })
                             }
