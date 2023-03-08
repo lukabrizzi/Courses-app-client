@@ -1,9 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import routes from './config/routes';
-import AuthProvider from './providers/AuthProviders';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import routes from "./config/routes";
+import AuthProvider from "./providers/AuthProvider";
 
-import './App.scss';
+import "./App.scss";
 
 function App() {
   return (

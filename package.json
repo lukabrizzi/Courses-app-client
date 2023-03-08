@@ -1,23 +1,21 @@
 {
-  "name": "cliente",
+  "name": "web-personal-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3977",
   "dependencies": {
-    "@ant-design/icons": "^4.6.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "antd": "^4.15.5",
-    "jwt-decode": "^3.1.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@tinymce/tinymce-react": "^3.3.2",
+    "antd": "^3.23.2",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
+    "query-string": "^6.10.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-drag-sortable": "^1.0.6",
-    "react-dropzone": "^11.3.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "sass": "^1.32.12",
-    "web-vitals": "^1.0.1"
+    "react-dropzone": "^10.2.1",
+    "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "dev": "react-scripts start",
@@ -26,10 +24,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

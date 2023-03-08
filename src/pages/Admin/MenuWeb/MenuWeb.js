@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { getMenuApi } from '../../../api/menu'
-import MenuWebList from '../../../components/admin/MenuWeb/MenuWebList'
-
+import React, { useState, useEffect } from "react";
+import { getMenuApi } from "../../../api/menu";
+import MenuWebList from "../../../components/Admin/MenuWeb/MenuWebList";
 
 export default function MenuWeb() {
-    const [menu, setMenu] = useState([])
-    const [reloadMenuWeb, setReloadMenuWeb] = useState(false)
+  const [menu, setMenu] = useState([]);
+  const [reloadMenuWeb, setReloadMenuWeb] = useState(false);
 
-    useEffect(() => {
-        getMenuApi().then(response => {
-            setMenu(response.menu)
-        })
+  useEffect(() => {
+    getMenuApi().then(response => {
+      setMenu(response.menu);
+    });
+    setReloadMenuWeb(false);
+  }, [reloadMenuWeb]);
 
-        setReloadMenuWeb(false)
-    }, [reloadMenuWeb])
-
-    return (
-        <div className="menu-web">
-            <MenuWebList menu={menu} setReloadMenuWeb={setReloadMenuWeb} />
-        </div>
-    )
+  return (
+    <div className="menu-web">
+      <MenuWebList menu={menu} setReloadMenuWeb={setReloadMenuWeb} />
+    </div>
+  );
 }

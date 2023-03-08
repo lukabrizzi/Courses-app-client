@@ -1,39 +1,54 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Layout, Menu, Icon } from 'antd';
-import { UserOutlined, HomeOutlined, MenuOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Layout, Menu, Icon } from "antd";
 
-import './MenuSider.scss';
+import "./MenuSider.scss";
 
 function MenuSider(props) {
-    const { menuCollapsed, location } = props;
+  const { menuCollapsed, location } = props;
+  const { Sider } = Layout;
 
-    const { Sider } = Layout;
-    return (
-        <Sider collapsible style={{ top: '65px' }}>
-            <Menu theme="dark" defaultSelectedKeys={[location.pathname]} mode="inline">
-                <Menu.Item key="/admin">
-                    <Link to="/admin">
-                        <HomeOutlined />
-                        <span className="nav-text">Home</span>
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="/admin/users">
-                    <Link to="/admin/users">
-                        <UserOutlined />
-                        <span className="nav-text">Usuarios</span>
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="/admin/menu">
-                    <Link to="/admin/menu">
-                        <MenuOutlined />
-                        <span className="nav-text">Menu</span>
-                    </Link>
-                </Menu.Item>
-            </Menu>
-        </Sider>
-    );
+  return (
+    <Sider className="admin-sider" collapsed={menuCollapsed}>
+      <Menu
+        theme="dark"
+        mode="inline"
+        // defaultSelectedKeys={[location.pathname]}
+        defaultSelectedKeys={["/admin/users"]}
+      >
+        {/* <Menu.Item key="/admin">
+          <Link to="/admin">
+            <Icon type="home" />
+            <span className="nav-text">Home</span>
+          </Link>
+        </Menu.Item> */}
+        <Menu.Item key="/admin/users">
+          <Link to="/admin/users">
+            <Icon type="user" />
+            <span className="nac-text">Usuarios</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/menu">
+          <Link to="/admin/menu">
+            <Icon type="menu" />
+            <span className="nac-text">Menú</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/courses">
+          <Link to="/admin/courses">
+            <Icon type="book" />
+            <span className="nac-text">Cursos</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/blog">
+          <Link to="/admin/blog">
+            <Icon type="message" />
+            <span className="nac-text">Blog</span>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    </Sider>
+  );
 }
 
 export default withRouter(MenuSider);
